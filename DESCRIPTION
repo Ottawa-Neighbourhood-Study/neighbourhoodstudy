@@ -1,0 +1,18 @@
+Package: neighbourhoodstudy
+Type: Package
+Title: Ottawa Neighbourhood Study (ONS) Functions and Data
+Version: 0.1.0
+Author: Christopher Belanger
+Maintainer: Christopher Belanger <cbela092@uottawa.ca>
+Description: Custom data and functions for the Ottawa Neighbourhood Study.
+License: MIT + file LICENSE
+Encoding: UTF-8
+LazyData: true
+Imports: 
+    dplyr,
+    magrittr,
+    sf,
+    tibble,
+    tidyr
+Depends: 
+    R (>= 2.10)
