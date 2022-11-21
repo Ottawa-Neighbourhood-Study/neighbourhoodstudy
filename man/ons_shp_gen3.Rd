@@ -11,6 +11,14 @@ An object of class \code{sf} (inherits from \code{tbl_df}, \code{tbl}, \code{dat
 ons_shp_gen3
 }
 \description{
-Ottawa Neighbourhood Study Spatial Boundaries (Gen3)
+The ONS Neighbourhood Boundaries were created by the Ottawa Neighbourhood Study
+(ONS) to analyse population statistics and are not indicative of actual neighbourhood limits.
 }
+\seealso{
+ons_shp_gen2
+
+Other shapefiles: 
+\code{\link{ons_shp_gen2}}
+}
+\concept{shapefiles}
 \keyword{datasets}
