@@ -104,3 +104,36 @@ ons_gen3_pop2021 <- custom |>
   dplyr::mutate(Name = stringr::str_extract(Name, "(?<=- ).*(?= \\()"))
 
 usethis::use_data(ons_gen3_pop2021)
+
+
+
+
+### DISSEMINATION-BLOCK LEVEL DATA FROM THE 2021 GEOGRAPHIC ATTRIBUTE FILE
+
+# The Geographic Attribute File contains geographic data at the dissemination
+# block level. The file includes geographic codes, land area, population and
+# dwelling counts, names, unique identifiers, DGUIDs and types, where
+# applicable.
+
+# https://www150.statcan.gc.ca/n1/pub/92-151-g/92-151-g2021001-eng.htm
+
+library(tidyverse)
+download.file(url = "https://www12.statcan.gc.ca/census-recensement/2021/geo/aip-pia/attribute-attribs/files-fichiers/2021_92-151_X.zip",
+              dest = "data-raw/temp/2021_92-151_X.zip")
+
+unzip("data-raw/temp/2021_92-151_X.zip", exdir = "data-raw/temp/geoattribute")
+
+geo <- readr::read_csv("data-raw/temp/geoattribute/2021_92-151_X.csv")
+
+ottawa_dbs_pop2021 <- geo |>
+  dplyr::filter(DBUID_IDIDU %in% neighbourhoodstudy::ottawa_dbs_shp$DBUID) |>
+  dplyr::select(DBUID = DBUID_IDIDU,
+#                DAUID = DAUID_ADIDU, # DAUID is first 8 characters of DBUID
+                dbpop2021 = DBPOP2021_IDPOP2021,
+                dbtdwell2021 = DBTDWELL2021_IDTLOG2021,
+                dburdwell2021 = DBURDWELL2021_IDRHLOG2021,
+                dbarea2021 = DBAREA2021_IDSUP2021)
+
+usethis::use_data(ottawa_dbs_pop2021, overwrite = TRUE)
+
+
