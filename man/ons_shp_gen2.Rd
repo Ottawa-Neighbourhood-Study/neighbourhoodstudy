@@ -21,7 +21,9 @@ Available publicly from the City of Ottawa: \url{https://open.ottawa.ca/datasets
 ons_shp_gen3
 
 Other shapefiles: 
-\code{\link{ons_shp_gen3}}
+\code{\link{ons_shp_gen3}},
+\code{\link{ottawa_phhs}},
+\code{\link{ottawa_shp_dbs}}
 }
 \concept{shapefiles}
 \keyword{datasets}

@@ -18,3 +18,39 @@
 #' @family shapefiles
 #' @seealso ons_shp_gen2
 "ons_shp_gen3"
+
+
+#' Pseudo-Households in Ottawa
+#'
+#' The following description is from the Government of Canada:
+#' https://open.canada.ca/data/en/dataset/b3a1d603-19ca-466c-ae95-b5185e56addf
+#'
+#' "The Pseudo-Household Demographic Distribution is a geospatial representative
+#' distribution of demographic data (population and households) derived from the
+#' Canadian Census from Statistics Canada. Demography is distributed within
+#' Dissemination Blocks along roadways, providing a more accurate geospatial
+#' distribution while still aligning with published Census geographies.
+#' Pseudo-household demographics are currently used to calculate broadband
+#' Internet service availability, but are equally applicable to other
+#' disciplines requiring a spatial distribution of households or population."
+#' @family shapefiles
+"ottawa_phhs"
+
+#' 2021 Statistics Canada Dissemination Blocks (DBs) in Ottawa
+#'
+#' https://www12.statcan.gc.ca/census-recensement/2021/geo/sip-pis/boundary-limites/index2021-eng.cfm?year=21
+#'
+#'
+#' @family shapefiles
+"ottawa_shp_dbs"
+
+#' Statistics Canada population statistics for ONS Gen3 Neighbourhoods
+#'
+#' SF_TotalPop	Total population, non-institutional and institutional residents, 100% Census data.
+#' SF_NIPOP	Total non-institutional population in private households, 100% Census data.
+#' SF_PTDWELL	Total number of private dwellings, 100% Census data.
+#' SF_PODWELL_UR	Total number of private dwellings occupied by usual residents, 100% Census data.
+#' LF_POP_PRIV	Total population in private households from long form, 25% Census data.
+#' LF_Households	Total number of households, 25% Census data.
+#' @seealso ons_shp_gen3
+"ons_gen3_pop2021"

@@ -91,3 +91,16 @@ usethis::use_data(ottawa_phhs, overwrite = TRUE)
 
 # clean up temp files
 lapply(paste0("data-raw/shapefiles/temp/", list.files("data-raw/shapefiles/temp")), file.remove)
+
+
+
+#### STATISTICS CANADA CUSTOM DATA CUTS FOR ONS GEN3 NEIGHBOURHOODS
+library(tidyverse)
+custom <- readr::read_csv("data-raw/statscan-custom-geo/StatsCanCustomGeo_Population Report_2021.csv")
+
+ons_gen3_pop2021 <- custom |>
+  dplyr::filter(stringr::str_detect(Name, "ONS2022")) |>
+  dplyr::mutate(ONS_ID = stringr::str_extract(Name, "(?<=\\()\\d{4}"), .before = 1) |>
+  dplyr::mutate(Name = stringr::str_extract(Name, "(?<=- ).*(?= \\()"))
+
+usethis::use_data(ons_gen3_pop2021)

@@ -5,7 +5,7 @@
 \alias{ons_shp_gen3}
 \title{Ottawa Neighbourhood Study Spatial Boundaries (Gen3)}
 \format{
-An object of class \code{sf} (inherits from \code{tbl_df}, \code{tbl}, \code{data.frame}) with 162 rows and 7 columns.
+An object of class \code{sf} (inherits from \code{tbl_df}, \code{tbl}, \code{data.frame}) with 161 rows and 7 columns.
 }
 \usage{
 ons_shp_gen3
@@ -18,7 +18,9 @@ The ONS Neighbourhood Boundaries were created by the Ottawa Neighbourhood Study
 ons_shp_gen2
 
 Other shapefiles: 
-\code{\link{ons_shp_gen2}}
+\code{\link{ons_shp_gen2}},
+\code{\link{ottawa_phhs}},
+\code{\link{ottawa_shp_dbs}}
 }
 \concept{shapefiles}
 \keyword{datasets}
