@@ -28,7 +28,8 @@ disciplines requiring a spatial distribution of households or population."
 Other shapefiles: 
 \code{\link{ons_gen2_shp}},
 \code{\link{ons_gen3_shp}},
-\code{\link{ottawa_dbs_shp}}
+\code{\link{ottawa_das_shp2021}},
+\code{\link{ottawa_dbs_shp2021}}
 }
 \concept{shapefiles}
 \keyword{datasets}

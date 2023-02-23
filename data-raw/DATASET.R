@@ -13,6 +13,7 @@ usethis::use_data(ons_gen3_shp, overwrite = TRUE)
 
 ##########################################################################################
 # 2021 Statscan census areas
+# Dissemination blocks
 download.file(url = "https://www12.statcan.gc.ca/census-recensement/2021/geo/sip-pis/boundary-limites/files-fichiers/ldb_000b21a_e.zip",
               dest = "data-raw/shapefiles/temp/ldb_000b21a_e.zip")
 
@@ -22,11 +23,25 @@ dbs_all <- sf::read_sf("data-raw/shapefiles/temp/ldb_000b21a_e.shp")
 ottawa_dbs_shp <- dplyr::filter(dbs_all, stringr::str_detect(DBUID, "^3506"))
 ottawa_dbs_shp <- sf::st_transform(ottawa_dbs_shp, crs="WGS84")
 
-usethis::use_data(ottawa_dbs_shp, overwrite = TRUE)
+usethis::use_data(ottawa_dbs_shp2021, overwrite = TRUE)
 
-# # optional checks
-#ottawa_shp_dbs
-#ggplot2::ggplot(ottawa_shp_dbs ) + ggplot2::geom_sf()
+# Dissemination areas
+
+download.file(url = "https://www12.statcan.gc.ca/census-recensement/2021/geo/sip-pis/boundary-limites/files-fichiers/lda_000b21a_e.zip",
+              dest = "data-raw/shapefiles/temp/lda_000b21a_e.zip")
+
+unzip("data-raw/shapefiles/temp/lda_000b21a_e.zip", exdir = "data-raw/shapefiles/temp")
+
+das_all <- sf::read_sf("data-raw/shapefiles/temp/lda_000b21a_e.shp")
+ottawa_das_shp2021 <- dplyr::filter(das_all, stringr::str_detect(DAUID, "^3506"))
+ottawa_das_shp2021 <- sf::st_transform(ottawa_das_shp2021, crs="WGS84")
+
+#ottawa_das_shp2021 |> ggplot2::ggplot() + ggplot2::geom_sf()
+
+usethis::use_data(ottawa_das_shp2021, overwrite = TRUE)
+
+
+
 
 
 # clean up temp files

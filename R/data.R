@@ -42,7 +42,15 @@
 #'
 #'
 #' @family shapefiles
-"ottawa_dbs_shp"
+"ottawa_dbs_shp2021"
+
+#' 2021 Statistics Canada Dissemination Areas (DAs) in Ottawa
+#'
+#' https://www12.statcan.gc.ca/census-recensement/2021/geo/sip-pis/boundary-limites/index2021-eng.cfm?year=21
+#'
+#'
+#' @family shapefiles
+"ottawa_das_shp2021"
 
 #' Statistics Canada population statistics for ONS Gen3 Neighbourhoods
 #'
@@ -73,3 +81,6 @@
 #'
 #' @seealso ottawa_dbs_shp
 "ottawa_dbs_pop2021"
+
+
+
