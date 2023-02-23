@@ -8,7 +8,7 @@
 #' @family shapefiles
 #' @seealso ons_shp_gen3
 #'
-"ons_shp_gen2"
+"ons_gen2_shp"
 
 #' Ottawa Neighbourhood Study Spatial Boundaries (Gen3)
 #'
@@ -17,7 +17,7 @@
 #'
 #' @family shapefiles
 #' @seealso ons_shp_gen2
-"ons_shp_gen3"
+"ons_gen3_shp"
 
 
 #' Pseudo-Households in Ottawa
@@ -34,7 +34,7 @@
 #' Internet service availability, but are equally applicable to other
 #' disciplines requiring a spatial distribution of households or population."
 #' @family shapefiles
-"ottawa_phhs"
+"ottawa_phhs_shp"
 
 #' 2021 Statistics Canada Dissemination Blocks (DBs) in Ottawa
 #'
@@ -42,7 +42,7 @@
 #'
 #'
 #' @family shapefiles
-"ottawa_shp_dbs"
+"ottawa_dbs_shp"
 
 #' Statistics Canada population statistics for ONS Gen3 Neighbourhoods
 #'

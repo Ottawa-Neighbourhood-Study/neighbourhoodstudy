@@ -1,15 +1,15 @@
 ## code to prepare data goes here
 
 
-ons_shp_gen2 <- sf::read_sf("data-raw/ons_shp_gen2/ons_shp_gen2.shp")
-ons_shp_gen2 <- sf::st_transform(ons_shp_gen2, crs = "WGS84")
+ons_gen2_shp <- sf::read_sf("data-raw/ons_shp_gen2/ons_shp_gen2.shp")
+ons_gen2_shp <- sf::st_transform(ons_shp_gen2, crs = "WGS84")
 
-usethis::use_data(ons_shp_gen2, overwrite = TRUE)
+usethis::use_data(ons_gen2_shp, overwrite = TRUE)
 
-ons_shp_gen3 <- sf::read_sf("data-raw/ons_shp_gen3/Gen3_with_rural_Feb2023_final.shp")
-ons_shp_gen3 <- sf::st_transform(ons_shp_gen3, crs = "WGS84")
-ons_shp_gen3 <- sf::st_make_valid(ons_shp_gen3)
-usethis::use_data(ons_shp_gen3, overwrite = TRUE)
+ons_gen3_shp <- sf::read_sf("data-raw/ons_shp_gen3/Gen3_with_rural_Feb2023_final.shp")
+ons_gen3_shp <- sf::st_transform(ons_gen3_shp, crs = "WGS84")
+ons_gen3_shp <- sf::st_make_valid(ons_gen3_shp)
+usethis::use_data(ons_gen3_shp, overwrite = TRUE)
 
 ##########################################################################################
 # 2021 Statscan census areas
@@ -19,10 +19,10 @@ download.file(url = "https://www12.statcan.gc.ca/census-recensement/2021/geo/sip
 unzip("data-raw/shapefiles/temp/ldb_000b21a_e.zip", exdir = "data-raw/shapefiles/temp")
 
 dbs_all <- sf::read_sf("data-raw/shapefiles/temp/ldb_000b21a_e.shp")
-ottawa_shp_dbs <- dplyr::filter(dbs_all, stringr::str_detect(DBUID, "^3506"))
-ottawa_shp_dbs <- sf::st_transform(ottawa_shp_dbs, crs="WGS84")
+ottawa_dbs_shp <- dplyr::filter(dbs_all, stringr::str_detect(DBUID, "^3506"))
+ottawa_dbs_shp <- sf::st_transform(ottawa_dbs_shp, crs="WGS84")
 
-usethis::use_data(ottawa_shp_dbs, overwrite = TRUE)
+usethis::use_data(ottawa_dbs_shp, overwrite = TRUE)
 
 # # optional checks
 #ottawa_shp_dbs
@@ -78,14 +78,14 @@ intersects <- ontario %>%
 i <- purrr::map(intersects, length)
 
 
-ottawa_phhs <- ontario %>%
+ottawa_phhs_shp <- ontario %>%
   dplyr::mutate(inscope = unlist(i)) %>%
   dplyr::filter(inscope == 1) %>%
   dplyr::select(-inscope) %>%
   sf::st_transform(crs="WGS84") %>%
   dplyr::filter(Type %in% c(3,4))
 
-usethis::use_data(ottawa_phhs, overwrite = TRUE)
+usethis::use_data(ottawa_phhs_shp, overwrite = TRUE)
 
 
 
