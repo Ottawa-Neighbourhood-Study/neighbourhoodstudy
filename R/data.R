@@ -82,5 +82,9 @@
 #' @seealso ottawa_dbs_shp
 "ottawa_dbs_pop2021"
 
-
-
+#' Max-Area Single-Link Indicator (SLI) from 2021 StatsCan DBs to Gen3 Neighbourhoods
+#'
+#' Dissemination Blocks are linked to the single ONS Gen3 neighbourhood they most
+#' overlap.
+#' @family slis
+"sli_dbs_gen3_maxoverlap"
