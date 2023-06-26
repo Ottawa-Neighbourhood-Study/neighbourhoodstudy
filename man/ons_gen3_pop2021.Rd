@@ -5,7 +5,7 @@
 \alias{ons_gen3_pop2021}
 \title{Statistics Canada population statistics for ONS Gen3 Neighbourhoods}
 \format{
-An object of class \code{tbl_df} (inherits from \code{tbl}, \code{data.frame}) with 161 rows and 8 columns.
+An object of class \code{tbl_df} (inherits from \code{tbl}, \code{data.frame}) with 116 rows and 8 columns.
 }
 \usage{
 ons_gen3_pop2021

@@ -5,7 +5,7 @@
 \alias{sli_dbs_gen3_maxoverlap}
 \title{Max-Area Single-Link Indicator (SLI) from 2021 StatsCan DBs to Gen3 Neighbourhoods}
 \format{
-An object of class \code{sf} (inherits from \code{grouped_df}, \code{tbl_df}, \code{tbl}, \code{data.frame}) with 8559 rows and 13 columns.
+An object of class \code{grouped_df} (inherits from \code{tbl_df}, \code{tbl}, \code{data.frame}) with 8559 rows and 2 columns.
 }
 \usage{
 sli_dbs_gen3_maxoverlap

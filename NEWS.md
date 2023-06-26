@@ -1,3 +1,7 @@
+# neighbourhoodstudy 0.6.0.9000
+
+* Added query_osm_api() function
+
 # neighbourhoodstudy 0.5.0
 
 * Added a `NEWS.md` file to track changes to the package.
