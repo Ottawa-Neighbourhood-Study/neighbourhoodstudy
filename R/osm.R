@@ -1,4 +1,5 @@
-
+# for clean R CMD CHECK
+name <- NULL
 
 
 #' Query the OpenStreetMaps (OSM) Overpass API for Amenities and Shops
@@ -15,6 +16,7 @@
 #' @return A tibble of OSM elements with point locations.
 #' @export
 query_osm_api <- function(bounding_box_shp, amenities= "", shops = "", process = TRUE, drop_unnamed_elements = TRUE) {
+
 
   if (all(shops == "") & all(amenities == "")) stop ("Must provide character vector of shop or amenity key-values.")
 

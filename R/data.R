@@ -20,7 +20,11 @@
 "ons_gen3_shp"
 
 
-#' Pseudo-Households in Ottawa
+
+#' Pseudo-Households in Ottawa Created Using package `sliopt`
+#'
+#' This is a custom set of pseudohouseholds (PHHs) created for the Ottawa
+#' Neighbourhood Study using an orignial methodology.
 #'
 #' The following description is from the Government of Canada:
 #' https://open.canada.ca/data/en/dataset/b3a1d603-19ca-466c-ae95-b5185e56addf
@@ -34,7 +38,7 @@
 #' Internet service availability, but are equally applicable to other
 #' disciplines requiring a spatial distribution of households or population."
 #' @family shapefiles
-"ottawa_phhs_shp"
+"ottawa_phhs"
 
 #' 2021 Statistics Canada Dissemination Blocks (DBs) in Ottawa
 #'

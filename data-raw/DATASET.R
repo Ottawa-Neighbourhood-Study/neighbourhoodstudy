@@ -1,6 +1,5 @@
 ## code to prepare data goes here
 
-
 ons_gen2_shp <- sf::read_sf("data-raw/ons_shp_gen2/ons_shp_gen2.shp")
 ons_gen2_shp <- sf::st_transform(ons_shp_gen2, crs = "WGS84")
 

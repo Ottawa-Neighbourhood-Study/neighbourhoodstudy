@@ -18,7 +18,7 @@ Other shapefiles:
 \code{\link{ons_gen2_shp}},
 \code{\link{ons_gen3_shp}},
 \code{\link{ottawa_das_shp2021}},
-\code{\link{ottawa_phhs_shp}}
+\code{\link{ottawa_phhs}}
 }
 \concept{shapefiles}
 \keyword{datasets}
