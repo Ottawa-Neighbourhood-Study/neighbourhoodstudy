@@ -1,4 +1,12 @@
+## Load the DA-to-gen3-SLI created using the sliopt package and mean average
+# percentage error (MAPE)
+
+sli_das_gen3_mape <- readr::read_csv("data-raw/slis/sli_da2021_onsgen3_mape-2023-07-07.csv")
+
+usethis::use_data(sli_das_gen3_mape, overwrite = TRUE)
+
 # Create single-link indicator from 2021 StatsCan DBs to ONS Gen3 neighbourhoods
+# using method of maximum overlap--not as good as MAPE above
 library(sf)
 
 dbs <- neighbourhoodstudy::ottawa_dbs_shp2021 |> sf::st_make_valid()

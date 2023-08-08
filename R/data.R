@@ -92,3 +92,12 @@
 #' overlap.
 #' @family slis
 "sli_dbs_gen3_maxoverlap"
+
+
+
+#' Single-Link Indicator (SLI) from 2021 StatsCan DAs to Gen3 Neighbourhoods
+#'
+#' Created using package `sliopt` and optimizing for mean average percentage error (MAPE).
+#'
+#' @family slis
+"sli_das_gen3_mape"

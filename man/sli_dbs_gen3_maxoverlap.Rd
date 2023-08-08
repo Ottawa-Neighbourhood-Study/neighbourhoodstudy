@@ -14,5 +14,9 @@ sli_dbs_gen3_maxoverlap
 Dissemination Blocks are linked to the single ONS Gen3 neighbourhood they most
 overlap.
 }
+\seealso{
+Other slis: 
+\code{\link{sli_das_gen3_mape}}
+}
 \concept{slis}
 \keyword{datasets}
