@@ -5,7 +5,7 @@
 \alias{sli_das_gen3_mape}
 \title{Single-Link Indicator (SLI) from 2021 StatsCan DAs to Gen3 Neighbourhoods}
 \format{
-An object of class \code{spec_tbl_df} (inherits from \code{tbl_df}, \code{tbl}, \code{data.frame}) with 1392 rows and 2 columns.
+An object of class \code{tbl_df} (inherits from \code{tbl}, \code{data.frame}) with 1392 rows and 2 columns.
 }
 \usage{
 sli_das_gen3_mape

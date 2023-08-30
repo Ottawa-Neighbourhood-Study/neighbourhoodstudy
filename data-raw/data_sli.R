@@ -1,7 +1,8 @@
 ## Load the DA-to-gen3-SLI created using the sliopt package and mean average
 # percentage error (MAPE)
 
-sli_das_gen3_mape <- readr::read_csv("data-raw/slis/sli_da2021_onsgen3_mape-2023-07-07.csv")
+sli_das_gen3_mape <- readr::read_csv("data-raw/slis/sli_da2021_onsgen3_mape-2023-07-07.csv") |>
+  dplyr::mutate(dplyr::across(dplyr::everything(), as.character))
 
 usethis::use_data(sli_das_gen3_mape, overwrite = TRUE)
 

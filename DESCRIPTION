@@ -1,7 +1,7 @@
 Package: neighbourhoodstudy
 Type: Package
 Title: Ottawa Neighbourhood Study (ONS) Functions and Data
-Version: 0.6.0
+Version: 0.8.0.9000
 Author: Christopher Belanger
 Maintainer: Christopher Belanger <cbela092@uottawa.ca>
 Description: Custom data and functions for the Ottawa Neighbourhood Study.
@@ -12,7 +12,9 @@ LazyDataCompression: xz
 Imports: 
     dplyr,
     osmdata,
-    sf
+    rlang,
+    sf,
+    tidyr
 Depends: 
     R (>= 2.10)
 RoxygenNote: 7.2.1

@@ -1,3 +1,11 @@
+# neighbourhoodstudy 0.8.0
+
+* Four new functions to calculate common ONS values.
+
+# neighbourhoodstudy 0.7.0
+
+* Ensured sli_das_gen3_mape values are all characters.
+
 # neighbourhoodstudy 0.6.0
 
 * Added query_osm_api() function
