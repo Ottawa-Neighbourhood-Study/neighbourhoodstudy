@@ -102,19 +102,20 @@ get_number_per_region_per_1000_residents_plus_buffer <- function(region_shp, poi
 
 
 
-#' Use a pre-computed origin-destination table to get ONS Neighbourhood-level average distances from DB centroids to closest 3 features
+#' Use a pre-computed origin-destination table to get ONS Neighbourhood-level average distances from DB centroids to closest n features
 #'
 #' @param od_table tibble output from `valhallr::od_table()` with columns `distance` and `time`
 #' @param from_id_col Character, name of column with unique origin identifiers. Default "DBUID".
 #' @param to_id_col Character, name of column with unique destination identifiers.
 #' @param froms_to_ons_sli Single-link indicator (SLI) from origins to ONS neighbourhoods. Consider using `neighbourhoodstudy::sli_das_gen3_mape`.
 #' @param dbpops Tibble, in the format of (or consider using) `neighbourhoodstudy::ottawa_dbs_pop2021`.
+#' @param n Integer, # of closts features to consider.
 #'
-#' @return Tibble with average distance to 3 closest features at ONS neighbourhood and Ottawa levels.
+#' @return Tibble with average distance to n closest features at ONS neighbourhood and Ottawa levels.
 #' @export
-get_avg_dist_to_closest_three <- function(od_table, from_id_col = "DBUID", to_id_col, froms_to_ons_sli, dbpops) {
+get_avg_dist_to_closest_n <- function(od_table, from_id_col = "DBUID", to_id_col, froms_to_ons_sli, dbpops, n) {
 
-  # take the od_table, get top 3 closest by distance for each origin,
+  # take the od_table, get top n closest by distance for each origin,
   # average them, get populations for DBUIDs, convert DBUIDs to DAUIDs, use
   # single-link indicator to map DAs to ONS hoods, pop-weight avg distance from
   # DAs up to gen3 hoods
@@ -122,7 +123,7 @@ get_avg_dist_to_closest_three <- function(od_table, from_id_col = "DBUID", to_id
   result_dbs <-  tidyr::drop_na(od_table) |>
     dplyr::group_by(!!rlang::sym(from_id_col)) |>
     dplyr::arrange(distance) |>
-    dplyr::slice_head(n=3) |>
+    dplyr::slice_head(n=n) |>
     dplyr::summarise(dist_closest_3 = mean(distance, na.rm = TRUE)) |>
     dplyr::left_join(dbpops, by = "DBUID") |>
     dplyr::mutate(DAUID = substr(DBUID, 1, 8))

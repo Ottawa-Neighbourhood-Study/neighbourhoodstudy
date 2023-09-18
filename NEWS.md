@@ -1,3 +1,7 @@
+# neighbourhoodstudy 0.9.0
+
+* Breaking change, renamed & refactored get_avg_dist_to_closest_three() to get_avg_dist_to_closest_n().
+
 # neighbourhoodstudy 0.8.0
 
 * Four new functions to calculate common ONS values.
