@@ -1,3 +1,7 @@
+# neighbourhoodstudy 0.9.2
+
+* Fix column name in get_avg_dist_to_closest_n()
+
 # neighbourhoodstudy 0.9.1
 
 * Bugfix in query_osm_api for multiple shops

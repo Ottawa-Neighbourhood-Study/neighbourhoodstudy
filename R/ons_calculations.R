@@ -140,7 +140,13 @@ get_avg_dist_to_closest_n <- function(od_table, from_id_col = "DBUID", to_id_col
     dplyr::summarise(dist_closest_3_popwt = sum((dist_closest_3 * dbpop2021) / sum(dbpop2021) )) |>
     dplyr::mutate(ONS_ID = "0", .before = 1)
 
+
   result <- dplyr::bind_rows(result_ott, result_hoods)
+
+  # rename results appropriately
+  colname <- paste0("dist_closest_",n,"popwt")
+
+  result <- dplyr::rename_with(result, ~ paste0("dist_closest_",n,"_popwt"), dplyr::all_of("dist_closest_3_popwt"))
 
   return(result)
 }
