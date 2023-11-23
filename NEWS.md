@@ -1,3 +1,7 @@
+# neighbourhoodstudy 0.9.1
+
+* Bugfix in query_osm_api for multiple shops
+
 # neighbourhoodstudy 0.9.0
 
 * Breaking change, renamed & refactored get_avg_dist_to_closest_three() to get_avg_dist_to_closest_n().

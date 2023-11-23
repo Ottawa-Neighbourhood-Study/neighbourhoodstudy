@@ -22,13 +22,13 @@ query_osm_api <- function(bounding_box_shp, amenities= "", shops = "", process =
 
   osm_query <- osmdata::opq(bbox = sf::st_bbox(bounding_box_shp), timeout = 10000)
 
-  if (shops != ""){
+  if (!all(shops == "")){
     shops_query <- paste0("\"shop\"=\"", shops, "\"" )
   }  else {
     shops_query <- NULL
   }
 
-  if (amenities[[1]] != "") {
+  if (!all(amenities == "")) {
     amenities_query <- paste0("\"amenity\"=\"", amenities, "\"" )
   } else {
     amenities_query <- NULL
