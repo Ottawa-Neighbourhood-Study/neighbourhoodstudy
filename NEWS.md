@@ -1,3 +1,8 @@
+# neighbourhoodstudy 0.9.3
+
+* Update function `query_osm_api()` to add optional parameter `manual_tags` for more flexible searching.
+
+
 # neighbourhoodstudy 0.9.2
 
 * Fix column name in get_avg_dist_to_closest_n()

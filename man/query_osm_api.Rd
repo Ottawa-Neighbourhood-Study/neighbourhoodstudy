@@ -8,6 +8,7 @@ query_osm_api(
   bounding_box_shp,
   amenities = "",
   shops = "",
+  manual_tags = "",
   process = TRUE,
   drop_unnamed_elements = TRUE
 )
@@ -18,6 +19,10 @@ query_osm_api(
 \item{amenities}{Optional. A character vector of amenity key values to search for.}
 
 \item{shops}{Optional. A character vector of shop key values to search for.}
+
+\item{manual_tags}{Optional. A character vector of manual tags to search for. Each tag
+must be its own element in the vector and values must be surrounded
+by double quotes. For example, c('"drink:wine"="yes"', '"drink:beer"="yes"', '"amenity"="bank"')}
 
 \item{process}{Boolean, default TRUE. Processes data to return a tidy result. If FALSE, returns raw Overpass API response.}
 

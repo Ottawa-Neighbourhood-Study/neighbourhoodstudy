@@ -9,13 +9,16 @@ name <- NULL
 #'
 #' @param bounding_box_shp An sf object that will be used to create a square bounding box for the search.
 #' @param amenities Optional. A character vector of amenity key values to search for.
+#' @param manual_tags Optional. A character vector of manual tags to search for. Each tag
+#'                    must be its own element in the vector and values must be surrounded
+#'                    by double quotes. For example, c('"drink:wine"="yes"', '"drink:beer"="yes"', '"amenity"="bank"')
 #' @param shops Optional. A character vector of shop key values to search for.
 #' @param process Boolean, default TRUE. Processes data to return a tidy result. If FALSE, returns raw Overpass API response.
 #' @param drop_unnamed_elements Boolean, default TRUE. Removes elements with no name that seem to be returned in error when searching e.g. for cafes.
 #'
 #' @return A tibble of OSM elements with point locations.
 #' @export
-query_osm_api <- function(bounding_box_shp, amenities= "", shops = "", process = TRUE, drop_unnamed_elements = TRUE) {
+query_osm_api <- function(bounding_box_shp, amenities= "", shops = "", manual_tags = "", process = TRUE, drop_unnamed_elements = TRUE) {
 
 
   if (all(shops == "") & all(amenities == "")) stop ("Must provide character vector of shop or amenity key-values.")
@@ -34,7 +37,13 @@ query_osm_api <- function(bounding_box_shp, amenities= "", shops = "", process =
     amenities_query <- NULL
   }
 
-  osm_query <- osmdata::add_osm_features(osm_query, features = c(shops_query, amenities_query))
+  if (!all(manual_tags == "")){
+    manual_query <- manual_tags
+  } else {
+    manual_query <- NULL
+  }
+
+  osm_query <- osmdata::add_osm_features(osm_query, features = c(shops_query, amenities_query, manual_tags))
 
   overpass_data <- osmdata::osmdata_sf(osm_query, quiet = FALSE)
 
