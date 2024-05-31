@@ -21,7 +21,7 @@ name <- NULL
 query_osm_api <- function(bounding_box_shp, amenities= "", shops = "", manual_tags = "", process = TRUE, drop_unnamed_elements = TRUE) {
 
 
-  if (all(shops == "") & all(amenities == "")) stop ("Must provide character vector of shop or amenity key-values.")
+  if (all(shops == "") & all(amenities == "") & all(manual_tags == "")) stop ("Must provide character vector of shop or amenity key-values.")
 
   osm_query <- osmdata::opq(bbox = sf::st_bbox(bounding_box_shp), timeout = 10000)
 
@@ -43,7 +43,7 @@ query_osm_api <- function(bounding_box_shp, amenities= "", shops = "", manual_ta
     manual_query <- NULL
   }
 
-  osm_query <- osmdata::add_osm_features(osm_query, features = c(shops_query, amenities_query, manual_tags))
+  osm_query <- osmdata::add_osm_features(osm_query, features = c(shops_query, amenities_query, manual_query))
 
   overpass_data <- osmdata::osmdata_sf(osm_query, quiet = FALSE)
 

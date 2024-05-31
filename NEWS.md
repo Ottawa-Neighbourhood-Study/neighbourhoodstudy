@@ -1,3 +1,7 @@
+# neighbourhoodstudy 0.9.4
+
+* Bugfix in function `query_osm_api()` when using parameter `manual_tags`.
+
 # neighbourhoodstudy 0.9.3
 
 * Update function `query_osm_api()` to add optional parameter `manual_tags` for more flexible searching.
