@@ -15,10 +15,12 @@ name <- NULL
 #' @param shops Optional. A character vector of shop key values to search for.
 #' @param process Boolean, default TRUE. Processes data to return a tidy result. If FALSE, returns raw Overpass API response.
 #' @param drop_unnamed_elements Boolean, default TRUE. Removes elements with no name that seem to be returned in error when searching e.g. for cafes.
+#' @param columns_to_select Character vector, optional. If provided, it will select dplyr::any_of() the provided column names. If set to NA it will return all columns.
 #'
 #' @return A tibble of OSM elements with point locations.
 #' @export
-query_osm_api <- function(bounding_box_shp, amenities= "", shops = "", manual_tags = "", process = TRUE, drop_unnamed_elements = TRUE) {
+query_osm_api <- function(bounding_box_shp, amenities= "", shops = "", manual_tags = "", process = TRUE, drop_unnamed_elements = TRUE,
+                          columns_to_select = c("osm_id", "name", "shop", "amenity", "brand", "addr.street", "addr.housenumber", "addr.city", "addr.postcode")) {
 
 
   if (all(shops == "") & all(amenities == "") & all(manual_tags == "")) stop ("Must provide character vector of shop or amenity key-values.")
@@ -61,13 +63,9 @@ query_osm_api <- function(bounding_box_shp, amenities= "", shops = "", manual_ta
     osm_polys <- overpass_data$osm_polygons
 
 
-    # define columns to select
-    columns_to_select <- c("osm_id", "name", "shop", "amenity", "brand", "addr.street", "addr.housenumber", "addr.city", "addr.postcode")
-
     osm_pts <- osm_pts |>
       dplyr::as_tibble() |>
-      sf::st_as_sf() |>
-      dplyr::select(dplyr::any_of(columns_to_select))
+      sf::st_as_sf() #|> dplyr::select(dplyr::any_of(columns_to_select))
 
     osm_poly_centroids <- osm_polys |>
       dplyr::as_tibble() |>
@@ -76,16 +74,16 @@ query_osm_api <- function(bounding_box_shp, amenities= "", shops = "", manual_ta
     sf::st_agr(osm_poly_centroids) <- "constant"
 
     osm_poly_centroids <- osm_poly_centroids |>
-      dplyr::select(dplyr::any_of(columns_to_select)) |>
       sf::st_centroid()
 
 
     # combine points and polygons
     # create a new column called "type" that combines shop and amenity into one value
-    result <- dplyr::bind_rows(osm_pts, osm_poly_centroids) #|>
-      #dplyr::mutate(type = dplyr::if_else((amenity %in% amenities),  amenity, shop), .before = 3) |>
-      #dplyr::filter(!is.na(type)) |>
-     # sf::st_transform(crs = "WGS84")
+    result <- dplyr::bind_rows(osm_pts, osm_poly_centroids)
+
+    if (!all(is.na(columns_to_select))) {
+      result <- dplyr::select(result, dplyr::any_of(columns_to_select))
+    }
 
     if (drop_unnamed_elements){
       result <- dplyr::filter(result, !is.na(name))

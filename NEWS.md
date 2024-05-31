@@ -1,3 +1,7 @@
+# neighbourhoodstudy 0.9.5
+
+* In function `query_osm_api()` make `columns_to_select` a parameter.
+
 # neighbourhoodstudy 0.9.4
 
 * Bugfix in function `query_osm_api()` when using parameter `manual_tags`.
