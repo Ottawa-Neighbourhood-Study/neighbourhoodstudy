@@ -1,7 +1,7 @@
 Package: neighbourhoodstudy
 Type: Package
 Title: Ottawa Neighbourhood Study (ONS) Functions and Data
-Version: 0.9.5.9000
+Version: 0.9.6.9000
 Author: Christopher Belanger
 Maintainer: Christopher Belanger <cbela092@uottawa.ca>
 Description: Custom data and functions for the Ottawa Neighbourhood Study.

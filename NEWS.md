@@ -1,3 +1,7 @@
+# neighbourhoodstudy 0.9.6
+
+* Add rurality to ons_gen3_shp (finally) for consistency across projects
+
 # neighbourhoodstudy 0.9.5
 
 * In function `query_osm_api()` make `columns_to_select` a parameter.

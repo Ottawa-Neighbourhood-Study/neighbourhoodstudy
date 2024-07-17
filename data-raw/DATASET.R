@@ -9,6 +9,10 @@ ons_gen3_shp <- sf::read_sf("data-raw/ons_shp_gen3/Gen3_with_rural_Feb2023_final
 ons_gen3_shp <- sf::st_transform(ons_gen3_shp, crs = "WGS84")
 ons_gen3_shp <- sf::st_make_valid(ons_gen3_shp)
 ons_gen3_shp$ONS_ID <- as.character(ons_gen3_shp$ONS_ID)
+ons_gen3_rurality <- readr::read_csv("data-raw/ons_shp_gen3/ONS_rurality_all_neighbourhoods.csv", col_types = readr::cols(.default = "c")) |>
+  dplyr::select(ONS_ID, rurality = Type)
+ons_gen3_shp <- dplyr::left_join(ons_gen3_shp, ons_gen3_rurality, by = "ONS_ID") |>
+  dplyr::select(ONS_ID, ONS_Name, ONS_Region, rurality, geometry)
 usethis::use_data(ons_gen3_shp, overwrite = TRUE)
 
 ##########################################################################################
